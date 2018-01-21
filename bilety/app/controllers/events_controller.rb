@@ -13,8 +13,9 @@ class EventsController < ApplicationController
 
   end
   def create
+    #may be a duplicate, but i am too afraid of removing it
 	event_parameters = params.require(:event).permit(:artist, :description,
-	:price_low, :price_high, :event_date)
+	:price_low, :price_high, :event_date, :maxSeats, :adultsOnly, :singleBuyerLimit)
 	@event = Event.new(event_parameters)
 	if @event.save
 	flash[:komunikat] = 'Event został poprawnie stworzony.'
@@ -36,6 +37,6 @@ end
     end
     # Never trust parameters from the scary internet, only allow the white list through.
     def event_params
-      params.require(:event).permit(:artist, :description, :price_low, :price_high, :event_date)
+      params.require(:event).permit(:artist, :description, :price_low, :price_high, :event_date, :maxSeats, :adultsOnly, :singleBuyerLimit)
     end
 end

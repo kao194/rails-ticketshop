@@ -7,28 +7,43 @@
 </p>
 
 <p>
-  <strong>Artist:</strong>
+  <strong>Wydarzenie:</strong>
   <%= @event.artist %>
 </p>
 
 <p>
-  <strong>Description:</strong>
+  <strong>Opis:</strong>
   <%= @event.description %>
 </p>
 
 <p>
-  <strong>Price (low):</strong>
+  <strong>Cena (dolny próg):</strong>
   <%= @event.price_low %>
 </p>
 
 <p>
-  <strong>Price (high):</strong>
+  <strong>Cena (górny próg):</strong>
   <%= @event.price_high %>
 </p>
 
 <p>
-  <strong>Event date:</strong>
+  <strong>Data wydarzenia:</strong>
   <%= @event.event_date %>
+</p>
+
+<p>
+  <strong>Limit biletów:</strong>
+  <%= @event.maxSeats %>
+</p>
+
+<p>
+  <strong>Wyłącznie dla dorosłych:</strong>
+  <%= @event.adultsOnly %>
+</p>
+
+<p>
+  <strong>Ilość biletów możliwa do zakupu przez jedną osobę:</strong>
+  <%= @event.singleBuyerLimit %>
 </p>
 
 <%= render "new_ticket", ticket: Ticket.new(:event_id=>@event.id) %>

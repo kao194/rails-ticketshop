@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180121092508) do
+ActiveRecord::Schema.define(version: 20180121152524) do
 
   create_table "events", force: :cascade do |t|
     t.string "artist"
@@ -20,17 +20,16 @@ ActiveRecord::Schema.define(version: 20180121092508) do
     t.date "event_date"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "maxSeats"
+    t.boolean "adultsOnly"
+    t.integer "singleBuyerLimit"
   end
 
   create_table "tickets", force: :cascade do |t|
-    t.string "name"
     t.string "seat_id_seq"
-    t.text "address"
     t.decimal "price"
-    t.string "email_address"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.string "phone"
     t.integer "event_id"
     t.integer "user_id"
     t.index ["event_id"], name: "index_tickets_on_event_id"
@@ -50,6 +49,10 @@ ActiveRecord::Schema.define(version: 20180121092508) do
     t.string "last_sign_in_ip"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "name"
+    t.date "date_of_birth"
+    t.text "address"
+    t.string "phone"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
