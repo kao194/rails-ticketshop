@@ -4,4 +4,11 @@
 <li><%= link_to event.artist, event %></li>
 <% end %>
 </ul>
+
+<h1> Poprzednie wydarzenia</h1>
+<ul>
+<% for event in @pastevents %>
+<li><%= link_to event.artist, event %></li>
+<% end %>
+</ul>
 <%= link_to 'Nowe ogłoszenie', new_event_path %>

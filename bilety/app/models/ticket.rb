@@ -1,16 +1,22 @@
 class Ticket < ApplicationRecord
-	validates :name, :presence => true, :length => {:minimum => 6}
-	validates :email_address, :presence => true
 	validates :price, :presence => true
+	validates :event_id, :presence => true
 	belongs_to :event
 	belongs_to :user
-	validate :there_are_seats_available
-	validate :ticket_limit_in_range
+	validate :there_are_seats_available, on: :create
+	validate :ticket_limit_in_range, on: :create
 	validate :event_price_range_is_correct
 	validate :event_taking_place_in_the_month
+	validate :juvenile_cant_buy_adult_event_ticket, on: :create
+
+	def juvenile_cant_buy_adult_event_ticket
+		if event.adultsOnly && user.date_of_birth+18.year > event.event_date
+			errors.add('Adult only event', ': you cannot buy ticket for this event')
+		end
+	end
 
 	def event_taking_place_in_the_month
-		if Date.today-1.month < event.event_date
+		if Date.today-1.month > event.event_date
 			errors.add('Event date', 'is too late to buy a ticket for it yet')
 		end
 		if Date.today > event.event_date

@@ -46,7 +46,9 @@
   <%= @event.singleBuyerLimit %>
 </p>
 
-<%= render "new_ticket", ticket: Ticket.new(:event_id=>@event.id) %>
+<%= if @event.event_date >= Date.today
+   render "new_ticket", ticket: Ticket.new(:event_id=>@event.id)
+end %>
 
 <%= render "tickets_list", tickets: @event.tickets %>
 

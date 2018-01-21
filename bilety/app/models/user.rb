@@ -5,5 +5,7 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :trackable, :validatable
   has_many :tickets
   validates :name, :presence => true, :length => {:minimum => 6}
-  
+  validates :date_of_birth, :presence => true
+  validates :phone, :presence => true
+
 end

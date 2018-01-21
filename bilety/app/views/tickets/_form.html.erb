@@ -12,14 +12,19 @@
   <% end %>
 
   <div class="field">
+    <%= form.label :event_id %>
+    <%= form.text_field :event_id, id: :ticket_event_id %>
+  </div>
+
+  <div class="field">
     <%= form.label :seat_id_seq %>
     <%= form.text_field :seat_id_seq, id: :ticket_seat_id_seq %>
   </div>
 
-  <!--<div class="field">
+  <div class="field">
     <%= form.label :price %>
     <%= form.text_field :price, id: :ticket_price %>
-  </div>-->
+  </div>
 
   <div class="actions">
     <%= form.submit %>

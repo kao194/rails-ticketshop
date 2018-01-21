@@ -2,7 +2,9 @@ class EventsController < ApplicationController
   before_action :set_event, only: [:show]
   before_action :check_logged_in, only: [:new, :create]
   def index
-    @events = Event.all
+    @events = Event.where("event_date >= ?", Date.today)
+
+    @pastevents = Event.where("event_date < ?", Date.today)
   end
 
   def new

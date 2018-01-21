@@ -14,7 +14,17 @@
 
   <div class="field">
     <%= f.label :name %><br />
-    <%= f.text_field :name, id: :user_name, autofocus: true, autocomplete: "off" %>
+    <%= f.text_field :name, autofocus: true, autocomplete: "off" %>
+  </div>
+
+  <div class="field">
+    <%= f.label :date_of_birth %><br />
+    <%= f.date_field :date_of_birth %>
+  </div>
+
+    <div class="field">
+    <%= f.label :phone %><br />
+    <%= f.text_field :phone %>
   </div>
 
   <div class="field">

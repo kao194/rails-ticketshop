@@ -15,7 +15,7 @@
   <tbody>
     <% @tickets.each do |ticket| %>
       <tr>
-        <td><%= ticket.user_id %></td>
+        <td><%= ticket.user.name %></td>
         <td><%= ticket.seat_id_seq %></td>
         <td><%= ticket.price %></td>
         <td><%= link_to 'Show', ticket %></td>
